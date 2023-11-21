@@ -14,7 +14,6 @@ const FRONTEND_PORT = process.env.FRONTEND_PORT || 3000;
 // Initialize the server
 const app = express();
 
-// Adding middleware to the server
 app.use(cors({ origin: "http://localhost:" + FRONTEND_PORT }));
 app.use(express.json());
 
