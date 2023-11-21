@@ -1,0 +1,1 @@
+// Bookmarked Job posting Schema
