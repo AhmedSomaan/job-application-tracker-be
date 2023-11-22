@@ -17,7 +17,7 @@ const app = express();
 app.use(cors({ origin: "http://localhost:" + FRONTEND_PORT }));
 app.use(express.json());
 
-// Let the server listen to the port if database is connected
+// Let the server listen to the port once the database is connected
 mongoose.connection.once("open", () => {
   console.log("connected to MongoDB");
   app.listen(BACKEND_PORT, () => {
