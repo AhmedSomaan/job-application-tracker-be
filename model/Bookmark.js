@@ -2,6 +2,10 @@
 const mongoose = require("mongoose");
 
 const bookmarkSchema = new mongoose.Schema({
+  bookmarked: {
+    type: Boolean,
+    default: false,
+  },
   status: {
     type: String,
     enum: ["applied", "expired", "intend to apply"],
