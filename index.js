@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const connectDB = require("./config/connectDB");
-const postingController = require("./controllers/posting-controller");
 
 // connect to MongoDB
 connectDB();
@@ -18,8 +17,13 @@ const app = express();
 app.use(cors({ origin: "http://localhost:" + FRONTEND_PORT }));
 app.use(express.json());
 
-app.get("/", postingController.getPostings);
-app.get("/details", postingController.getDetails);
+// Load routes
+const users = require("./routes/users");
+const postings = require("./routes/postings");
+
+// Adding routes for the server
+app.use("/users", users);
+app.use("/postings", postings);
 
 // Let the server listen to the port once the database is connected
 mongoose.connection.once("open", () => {

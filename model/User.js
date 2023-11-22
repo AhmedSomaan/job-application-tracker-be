@@ -1,10 +1,12 @@
 // User Schema
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const Bookmark = require("./Bookmark");
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   phone: String,
-  bookmarkedJobs: [bookmark],
+  bookmarks: [Bookmark.schema],
 });
+
+module.exports = mongoose.model("user", userSchema);
