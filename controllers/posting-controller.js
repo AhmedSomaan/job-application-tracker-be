@@ -58,26 +58,29 @@ const getDetails = async (req, res) => {
 
   try {
     const data = {
-      title: "example job title",
-      description: "example description",
-      company: "example company",
-      location: "example location",
-      date: "example days ago",
-      link: "https://example.com/link",
+      job_position: "example job title",
+      job_description: "example description",
+      company_name: "example company",
+      job_location: "example location",
+      job_posting_time: "example days ago",
+      Employment_type: "Full-time",
+      Seniority_level: "Entry level",
+      job_apply_link: "https://example.com/link",
     }; //await axios.get(apiUrl, { params });
     // save to db
     currentUser.bookmarks.push({
       jobId: jobId,
-      title: data.title,
-      description: data.description,
-      company: data.company,
-      location: data.location,
-      postingDate: data.date,
-      link: data.link,
+      title: data.job_position,
+      description: data.job_description,
+      companyName: data.company_name,
+      location: data.job_location,
+      postingDate: data.job_posting_time,
+      tags: `${data.Employment_type}|${data.Seniority_level}`,
+      link: data.job_apply_link,
     });
     await currentUser.save();
     console.log("returned from fethced api data");
-    res.status(200).json(currentUser.bookmarks[0]);
+    res.status(200).json(currentUser.bookmarks);
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
@@ -105,26 +108,29 @@ const toggleBookmark = async (req, res) => {
     };
     try {
       const data = {
-        title: "bookmarked example job title",
-        description: "bookmarked example description",
-        company: "bookmarked example company",
-        location: "bookmarked example location",
-        date: "bookmarked example days ago",
-        link: "https://example.com/link",
+        job_position: "saved example job title",
+        job_description: "saved example description",
+        company_name: "saved example company",
+        job_location: "saved example location",
+        job_posting_time: "saved example days ago",
+        Employment_type: "saved Full-time",
+        Seniority_level: "saved Entry level",
+        job_apply_link: "https://example.com/link",
       }; //await axios.get(apiUrl, { params });
       // save to db
       currentUser.bookmarks.push({
         jobId: jobId,
         bookmarked: isBookmarked,
-        title: data.title,
-        description: data.description,
-        company: data.company,
-        location: data.location,
-        postingDate: data.date,
-        link: data.link,
+        title: data.job_position,
+        description: data.job_description,
+        companyName: data.company_name,
+        location: data.job_location,
+        postingDate: data.job_posting_time,
+        tags: `${data.Employment_type}|${data.Seniority_level}`,
+        link: data.job_apply_link,
       });
       await currentUser.save();
-      res.status(200).json(currentUser.bookmarks[0]);
+      res.status(200).json(currentUser.bookmarks);
       return;
     } catch (error) {
       console.error(error);
