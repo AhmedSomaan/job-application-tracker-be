@@ -20,7 +20,7 @@ const createUser = async (req, res) => {
   }
 };
 
-const bookmarkedJob = async (req, res) => {
+const bookmarkedJobs = async (req, res) => {
   const userId = req.body.userId || "655e5ea7b49887078c301783";
 
   try {
@@ -36,4 +36,4 @@ const bookmarkedJob = async (req, res) => {
   }
 };
 
-module.exports = { createUser, bookmarkedJob };
+module.exports = { createUser, bookmarkedJobs };

@@ -18,7 +18,7 @@ const bookmarkSchema = new mongoose.Schema({
   companyLogo: String,
   postingDate: String,
   location: String,
-  salary: Number,
+  salary: String,
   benefits: String,
   jobType: String,
   link: String,

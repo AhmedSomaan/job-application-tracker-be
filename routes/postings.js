@@ -4,6 +4,15 @@ const postings = express.Router();
 
 postings.route("/").get(postingController.getPostings);
 
-postings.route("/:jobId").get(postingController.getDetails);
+postings
+  .route("/:jobId")
+  .get(postingController.getDetails)
+  .put((req, res) => {
+    if (req.body.status) {
+      postingController.updateStatus(req, res);
+    } else {
+      postingController.toggleBookmark(req, res);
+    }
+  });
 
 module.exports = postings;

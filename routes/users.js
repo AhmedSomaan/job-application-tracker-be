@@ -4,6 +4,6 @@ const users = express.Router();
 
 users.route("/").post(userController.createUser);
 
-users.route("/bookmarks").get(userController.bookmarkedJob);
+users.route("/bookmarks").get(userController.bookmarkedJobs);
 
 module.exports = users;
