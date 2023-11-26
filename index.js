@@ -22,7 +22,7 @@ const users = require("./routes/users");
 const postings = require("./routes/postings");
 
 // Adding routes for the server
-app.use("/users", users);
+app.use("/user", users);
 app.use("/postings", postings);
 
 // Let the server listen to the port once the database is connected
