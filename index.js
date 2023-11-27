@@ -14,11 +14,18 @@ const FRONTEND_PORT = process.env.FRONTEND_PORT || 3000;
 // Initialize the server
 const app = express();
 
-// Adding middleware to the server
 app.use(cors({ origin: "http://localhost:" + FRONTEND_PORT }));
 app.use(express.json());
 
-// Let the server listen to the port if database is connected
+// Load routes
+const users = require("./routes/users");
+const postings = require("./routes/postings");
+
+// Adding routes for the server
+app.use("/user", users);
+app.use("/postings", postings);
+
+// Let the server listen to the port once the database is connected
 mongoose.connection.once("open", () => {
   console.log("connected to MongoDB");
   app.listen(BACKEND_PORT, () => {
