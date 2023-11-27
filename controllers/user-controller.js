@@ -20,6 +20,26 @@ const createUser = async (req, res) => {
   }
 };
 
+const savedJobs = async (req, res) => {
+  const userId = req.body.userId || "655e5ea7b49887078c301783";
+
+  try {
+    const currentUser = await User.findById(userId);
+
+    const savedList = currentUser.bookmarks.map((bookmark) => {
+      return {
+        bookmarked: bookmark.bookmarked,
+        jobId: bookmark.jobId,
+        status: bookmark.status,
+      };
+    });
+
+    res.status(200).json(savedList);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const bookmarkedJobs = async (req, res) => {
   const userId = req.body.userId || "655e5ea7b49887078c301783";
 
@@ -36,4 +56,4 @@ const bookmarkedJobs = async (req, res) => {
   }
 };
 
-module.exports = { createUser, bookmarkedJobs };
+module.exports = { createUser, bookmarkedJobs, savedJobs };

@@ -6,4 +6,6 @@ users.route("/").post(userController.createUser);
 
 users.route("/bookmarks").get(userController.bookmarkedJobs);
 
+users.route("/saved").get(userController.savedJobs);
+
 module.exports = users;
