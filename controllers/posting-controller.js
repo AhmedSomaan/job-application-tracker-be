@@ -359,7 +359,7 @@ const getDetails = async (req, res) => {
     // };
     const { data } = await axios.get(apiUrl, { params });
     // save to db
-    currentUser.bookmarks.push({
+    const newBookmark = {
       jobId: jobId,
       title: data[0].job_position,
       description: data[0].job_description,
@@ -368,10 +368,13 @@ const getDetails = async (req, res) => {
       postingDate: data[0].job_posting_time,
       tags: `${data[0].Employment_type}|${data[0].Seniority_level}`,
       link: data[0].job_apply_link,
-    });
+    };
+    currentUser.bookmarks.push(newBookmark);
     await currentUser.save();
     console.log("returned from fethced api data ", data);
-    res.status(200).json(currentUser.bookmarks);
+    res
+      .status(200)
+      .json(currentUser.bookmarks.find((bookmark) => bookmark.jobId === jobId));
   } catch (error) {
     console.error(error);
     res.status(500).send(error);
@@ -409,7 +412,7 @@ const toggleBookmark = async (req, res) => {
       //   job_apply_link: "https://example.com/link",
       // };
       const { data } = await axios.get(apiUrl, { params });
-      console.log("toggle bookmark: ", data)
+      console.log("toggle bookmark: ", data);
       // save to db
       const updatedBookmark = {
         jobId: jobId,
@@ -424,7 +427,11 @@ const toggleBookmark = async (req, res) => {
       };
       currentUser.bookmarks.push(updatedBookmark);
       await currentUser.save();
-      res.status(200).json(updatedBookmark);
+      res
+        .status(200)
+        .json(
+          currentUser.bookmarks.find((bookmark) => bookmark.jobId === jobId)
+        );
       return;
     } catch (error) {
       console.error(error);
