@@ -1,16 +1,16 @@
 # Overview
+This is the backend for [JobCat](https://github.com/AhmedSomaan/job-application-tracker-fe) - The Job application Catalogue to keep all your job applications in one place
 
-This is the backend for [JobCat](https://github.com/AhmedSomaan/job-application-tracker-fe) - The Job application Catalogue
-
-Uses MongoDB and Mongoose to store user's bookmarked jobs
+# Features
+- Fetches Job postings from linked in using [Scrapingdog API](https://www.scrapingdog.com/linkedin-jobs-api)
+- Uses MongoDB and Mongoose to store user's bookmarked jobs and all viewed job details
+- update bookmark and application status (intend to apply, applied and expired)
 
 # Requirements
-
 - Free API key from: [Scrapingdog](https://www.scrapingdog.com/linkedin-jobs-api)
 - Setup MongoDB Cluster and add connection URL
 
 # Data Models
-
 ```js
 let User = {
   name: String,
@@ -75,7 +75,6 @@ let Bookmark = {
 ```
 
 # Endpoints
-
 - POST user/
 - GET user/bookmarks
 - GET user/saved
