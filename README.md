@@ -75,10 +75,10 @@ let Bookmark = {
 ```
 
 # Endpoints
-- POST user/
-- GET user/bookmarks
-- GET user/saved
+- POST ```user/```
+- GET ```user/bookmarks```
+- GET ```user/saved```
 
-- POST postings/
-- GET postings/:jobId
-- PUT postings/:jobId
+- POST ```postings/```
+- GET ```postings/:jobId```
+- PUT ```postings/:jobId```
