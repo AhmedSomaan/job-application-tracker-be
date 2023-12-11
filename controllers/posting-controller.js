@@ -347,16 +347,6 @@ const getDetails = async (req, res) => {
   };
 
   try {
-    // const data = {
-    //   job_position: "example job title",
-    //   job_description: "example description",
-    //   company_name: "example company",
-    //   job_location: "example location",
-    //   job_posting_time: "example days ago",
-    //   Employment_type: "Full-time",
-    //   Seniority_level: "Entry level",
-    //   job_apply_link: "https://example.com/link",
-    // };
     const { data } = await axios.get(apiUrl, { params });
     // save to db
     const newBookmark = {
