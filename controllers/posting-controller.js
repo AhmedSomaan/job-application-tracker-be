@@ -391,16 +391,6 @@ const toggleBookmark = async (req, res) => {
       job_id: jobId,
     };
     try {
-      // const data = {
-      //   job_position: "saved example job title",
-      //   job_description: "saved example description",
-      //   company_name: "saved example company",
-      //   job_location: "saved example location",
-      //   job_posting_time: "saved example days ago",
-      //   Employment_type: "saved Full-time",
-      //   Seniority_level: "saved Entry level",
-      //   job_apply_link: "https://example.com/link",
-      // };
       const { data } = await axios.get(apiUrl, { params });
       console.log("toggle bookmark: ", data);
       // save to db
